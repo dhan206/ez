@@ -1,0 +1,4 @@
+/* line 2, /Users/cbaumann/Desktop/ez/core/modules/ez-height/ezHeight.scss */
+[data-ezHeight] > div {
+  display: inline-block;
+  width: 100%; }
