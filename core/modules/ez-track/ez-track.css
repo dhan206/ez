@@ -1,0 +1,30 @@
+.ez-track {
+  font-size: 0;
+  position: relative;
+  overflow-y: hidden;
+  cursor: pointer; }
+  .ez-track .ez-track-inner {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    white-space: nowrap;
+    padding: 25px 0; }
+    .ez-track .ez-track-inner .ez-track-card {
+      display: inline-block;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 300px;
+      padding: 7.5px; }
+      .ez-track .ez-track-inner .ez-track-card > div {
+        width: 100%; }
+    .ez-track .ez-track-inner::-webkit-scrollbar {
+      width: 0px; }
+  .ez-track::after {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 25px;
+    color: #fff;
+    display: block;
+    content: " "; }

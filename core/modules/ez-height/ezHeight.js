@@ -1,24 +1,18 @@
-(function (w, d, $) {
+(function (w, d) {
     "use strict";
-
-    var ezHeight = function () {
-        var heights = {};
-        $("[data-ezHeight]").each(function (i, e) {
-            if (!heights[$(e).attr("data-ezHeight")]) {
-                heights[$(e).attr("data-ezHeight")] = $(e).find(">div:first").height();
-            } else if ($(e).find(">div:first").height() > heights[$(e).attr("data-ezHeight")]) {
-                heights[$(e).attr("data-ezHeight")] = $(e).find(">div:first").height();
-            }
+    function ezheight() {
+        var ez = Array.prototype.slice.call(d.querySelectorAll("[data-ezHeight]"));
+        var hs = {};
+        ez.forEach(function (v) {
+            var a = v.getAttribute("data-ezHeight");
+            var h = v.children[0].clientHeight;
+            hs[a] = (!hs[a] || h > hs[a]) ? h : hs[a];
         });
-        for (var h in heights) {
-            $("[data-ezHeight='" + h + "']").height(heights[h]);
-        };
-    };
-    $(w).resize(ezHeight);
-    var loader = setInterval(function () {
-        ezHeight();
-        if (d.readyState === "complete") {
-            clearInterval(loader);
-        }
-    }, 100);
-}(window, document, jQuery));
+        ez.forEach(function (v) {
+            var a = v.getAttribute("data-ezHeight");
+            v.style.height = hs[a] + "px";
+        });
+    }
+    w.addEventListener("resize", ezheight);
+    w.onload = ezheight;
+}(window, document));
